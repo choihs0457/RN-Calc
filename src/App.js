@@ -4,16 +4,17 @@ import { StyleSheet, Text, View } from 'react-native';
 import Button, { ButtonTypes } from './components/Button';
 export default function App() {
   const [result, setResult] = useState(0);
+
   return (
     <View style={styles.container}>
+      <StatusBar style="light" />
+
       <View style={styles.resultContainer}>
         <Text style={styles.result}>{result}</Text>
       </View>
       <View style={styles.buttonContainer}>
         <Text>button</Text>
       </View>
-
-      <StatusBar style="auto" />
     </View>
   );
 }
