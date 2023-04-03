@@ -10,12 +10,21 @@ const Operators = {
 };
 export default function App() {
   const [result, setResult] = useState(0);
+
   const width = (useWindowDimensions().width - 5) / 4;
+
+  const onPressNumber = (num) => {
+    setResult((prev) => prev * 10 + num);
+  };
+
   return (
     <View style={styles.container}>
       <StatusBar style="light" />
+
       <View style={styles.resultContainer}>
-        <Text style={styles.result}>{result}</Text>
+        <Text style={styles.result}>
+          {result.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
+        </Text>
       </View>
 
       <View style={styles.buttonContainer}>
@@ -25,16 +34,15 @@ export default function App() {
               <Button
                 key={num}
                 title={num.toString()}
-                onPress={() => {}}
+                onPress={() => onPressNumber(num)}
                 buttonStyle={{ width, height: width, marginTop: 1 }}
               />
             ))}
           </View>
-
           <View style={styles.bottom}>
             <Button
               title="0"
-              onPress={() => {}}
+              onPress={() => onPressNumber(0)}
               buttonStyle={{ width: width * 2, height: width }}
             />
             <Button
